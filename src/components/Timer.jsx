@@ -28,7 +28,8 @@ function Timer() {
   return (
     <>
       <div>
-        {minutes}:{seconds < 10 ? "0" + seconds : seconds}
+        {minutes < 10 ? "0" + minutes : minutes}:
+        {seconds < 10 ? "0" + seconds : seconds}
       </div>
       <Button onClick={startTimer}>Start</Button>
       <Button onClick={pauseTimer}>Pause</Button>
