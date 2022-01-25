@@ -8,6 +8,7 @@ function Timer() {
   const [isTimerActive, setIsTimerActive] = useState(false);
 
   const startTimer = () => setIsTimerActive(true);
+  const pauseTimer = () => setIsTimerActive(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -25,6 +26,7 @@ function Timer() {
         {minutes}:{seconds}
       </div>
       <Button onClick={startTimer}>Start</Button>
+      <Button onClick={pauseTimer}>Pause</Button>
     </>
   );
 }
