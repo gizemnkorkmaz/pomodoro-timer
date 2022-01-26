@@ -1,38 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import Button from "./Button";
 
+import useInterval from "../hooks/useInterval";
+
+import formatTime from "../utils/formatTime";
+import minutesToSeconds from "../utils/minutesToSeconds";
+
 function Timer() {
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(25);
+  const [seconds, setSeconds] = useState(minutesToSeconds(25));
   const [isTimerActive, setIsTimerActive] = useState(false);
 
-  const startTimer = () => setIsTimerActive(true);
   const pauseTimer = () => setIsTimerActive(false);
+  const startTimer = () => setIsTimerActive(true);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      clearInterval(timer);
+  useInterval(() => {
+    if (isTimerActive && seconds) {
+      setSeconds(seconds - 1);
+    }
+  }, 1000);
 
-      if (isTimerActive) {
-        if (seconds > 0 && minutes >= 0) {
-          setSeconds(seconds - 1);
-        } else if (seconds === 0 && minutes > 0) {
-          setSeconds(59);
-          setMinutes(minutes - 1);
-        }
-      }
-    }, 1000);
-  }, [isTimerActive, seconds, minutes]);
+  const formattedTime = formatTime(seconds);
 
   return (
     <>
-      <div>
-        {minutes < 10 ? "0" + minutes : minutes}:
-        {seconds < 10 ? "0" + seconds : seconds}
-      </div>
-      <Button onClick={startTimer}>Start</Button>
-      <Button onClick={pauseTimer}>Pause</Button>
+      <div>{formattedTime}</div>
+      <Button onClick={isTimerActive ? pauseTimer : startTimer}>
+        {isTimerActive ? "Pause" : "Start"}
+      </Button>
     </>
   );
 }
