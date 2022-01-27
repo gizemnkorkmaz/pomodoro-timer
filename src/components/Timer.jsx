@@ -8,7 +8,7 @@ import formatTime from "../utils/formatTime";
 import minutesToSeconds from "../utils/minutesToSeconds";
 
 function Timer() {
-  const [seconds, setSeconds] = useState(minutesToSeconds(0.05));
+  const [seconds, setSeconds] = useState(minutesToSeconds(25));
   const [isTimerActive, setIsTimerActive] = useState(false);
 
   const pauseTimer = () => setIsTimerActive(false);
