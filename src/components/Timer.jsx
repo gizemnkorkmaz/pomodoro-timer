@@ -8,17 +8,20 @@ import formatTime from "../utils/formatTime";
 import minutesToSeconds from "../utils/minutesToSeconds";
 
 function Timer() {
-  const [seconds, setSeconds] = useState(minutesToSeconds(25));
+  const [seconds, setSeconds] = useState(minutesToSeconds(0.05));
   const [isTimerActive, setIsTimerActive] = useState(false);
 
   const pauseTimer = () => setIsTimerActive(false);
   const startTimer = () => setIsTimerActive(true);
 
-  useInterval(() => {
-    if (isTimerActive && seconds) {
-      setSeconds(seconds - 1);
-    }
-  }, 1000);
+  useInterval(
+    () => {
+      if (isTimerActive && seconds) {
+        setSeconds(seconds - 1);
+      }
+    },
+    isTimerActive ? 1000 : null
+  );
 
   const formattedTime = formatTime(seconds);
 
