@@ -1,7 +1,7 @@
 import React from "react";
 
-function Rounds({ roundCount }) {
+function RoundCount({ roundCount }) {
   return <div>#{roundCount}</div>;
 }
 
-export default Rounds;
+export default RoundCount;
