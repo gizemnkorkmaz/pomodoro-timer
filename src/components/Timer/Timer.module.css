@@ -26,3 +26,12 @@
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.skipButton {
+  background: none;
+  border: none;
+  position: relative;
+  top: 10px;
+  left: 20px;
+  padding: 0;
+}

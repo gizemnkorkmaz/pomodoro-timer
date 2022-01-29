@@ -10,6 +10,7 @@ import formatTime from "../../utils/formatTime";
 import minutesToSeconds from "../../utils/minutesToSeconds";
 
 import styles from "./Timer.module.css";
+import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 
 function Timer() {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
@@ -76,7 +77,11 @@ function Timer() {
       >
         {isTimerActive ? "Pause" : "Start"}
       </Button>
-      {isTimerActive && <Button onClick={skipRound}>Skip</Button>}
+      {isTimerActive && (
+        <Button className={styles.skipButton} onClick={skipRound}>
+          <SkipIcon />
+        </Button>
+      )}
       <RoundCount roundCount={roundCount} />
     </div>
   );
