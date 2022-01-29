@@ -35,3 +35,26 @@
   left: 20px;
   padding: 0;
 }
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+  }
+
+  .Timer {
+    font-size: 40px;
+  }
+
+  .startButton {
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  .skipButton {
+    max-width: 10px;
+    max-height: 10px;
+    top: 7px;
+  }
+}

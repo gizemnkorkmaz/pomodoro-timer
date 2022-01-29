@@ -3,3 +3,9 @@
   font-size: 20px;
   color: rgba(255, 255, 255, 0.555);
 }
+
+@media screen and (max-width: 500px) {
+  .RoundCount {
+    font-size: 15px;
+  }
+}

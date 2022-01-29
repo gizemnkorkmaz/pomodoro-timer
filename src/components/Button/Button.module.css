@@ -9,3 +9,9 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 500px) {
+  .Button {
+    font-size: 12px;
+  }
+}
