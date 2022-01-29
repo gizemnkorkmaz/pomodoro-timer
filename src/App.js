@@ -1,9 +1,11 @@
-import Header from "./components/Header";
-import Timer from "./components/Timer";
+import Header from "./components/Header/Header";
+import Timer from "./components/Timer/Timer";
+
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.App}>
       <Header />
       <Timer />
     </div>
