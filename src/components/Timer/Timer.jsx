@@ -4,7 +4,7 @@ import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import styles from "./Timer.module.css";
 
 import Button from "../Button/Button";
-import RoundCount from "../RoundCount/RoundCount";
+import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
 
 import formatTime from "../../utils/formatTime";
@@ -16,7 +16,7 @@ function Timer() {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [round, setRound] = useState("pomodoro");
-  const [roundCount, setRoundCount] = useState(1);
+  const [currentRound, setCurrentCount] = useState(1);
 
   const selectRound = (round) => {
     const roundTime = {
@@ -37,14 +37,14 @@ function Timer() {
 
   const setNextRound = (round) => {
     if (round === "pomodoro") {
-      if (roundCount % 4 !== 0) {
+      if (currentRound % 4 !== 0) {
         selectRound("shortBreak");
       } else {
         selectRound("longBreak");
       }
     } else {
       selectRound("pomodoro");
-      setRoundCount(roundCount + 1);
+      setCurrentCount(currentRound + 1);
     }
   };
 
@@ -89,7 +89,7 @@ function Timer() {
         </Button>
       )}
       <div className={styles.roundMessage}>{roundMessage}</div>
-      <RoundCount roundCount={roundCount} />
+      <CurrentRound currentRound={currentRound} />
     </div>
   );
 }
