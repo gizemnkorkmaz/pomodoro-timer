@@ -12,7 +12,8 @@
 }
 
 .Button:focus,
-.Button:hover {
+.Button:hover,
+.active {
   background-color: rgba(219, 110, 179, 0.658);
 }
 
