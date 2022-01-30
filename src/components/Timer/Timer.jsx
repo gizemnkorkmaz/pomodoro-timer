@@ -75,7 +75,12 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.timerActive : styles.container}`}>
-      <SelectRound selectRound={selectRound} />
+      <SelectRound
+        selectRound={selectRound}
+        isPomodoro={round === "pomodoro"}
+        isShortBreak={round === "shortBreak"}
+        isLongBreak={round === "longBreak"}
+      />
       <div className={styles.Timer}>{formattedTime}</div>
       <Button
         className={styles.startButton}
