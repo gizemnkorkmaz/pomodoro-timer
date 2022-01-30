@@ -74,7 +74,7 @@ function Timer() {
   const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   return (
-    <div className={styles.container}>
+    <div className={`${isTimerActive ? styles.timerActive : styles.container}`}>
       <SelectRound selectRound={selectRound} />
       <div className={styles.Timer}>{formattedTime}</div>
       <Button
