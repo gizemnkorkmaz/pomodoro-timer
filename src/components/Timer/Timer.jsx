@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
+import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
+import styles from "./Timer.module.css";
+
 import Button from "../Button/Button";
 import RoundCount from "../RoundCount/RoundCount";
 import SelectRound from "../SelectRound/SelectRound";
 
-import useInterval from "../../hooks/useInterval";
-
 import formatTime from "../../utils/formatTime";
 import minutesToSeconds from "../../utils/minutesToSeconds";
 
-import styles from "./Timer.module.css";
-import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
+import useInterval from "../../hooks/useInterval";
 
 function Timer() {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
@@ -35,22 +35,26 @@ function Timer() {
   const pauseTimer = () => setIsTimerActive(false);
   const startTimer = () => setIsTimerActive(true);
 
+  const setNextRound = (round) => {
+    if (round === "pomodoro") {
+      if (roundCount % 4 !== 0) {
+        selectRound("shortBreak");
+      } else {
+        selectRound("longBreak");
+      }
+    } else {
+      selectRound("pomodoro");
+      setRoundCount(roundCount + 1);
+    }
+  };
+
   const skipRound = () => {
     const isConfirm = window.confirm(
       "Are you sure you want to finish the round early?"
     );
 
     if (isConfirm) {
-      if (round === "pomodoro") {
-        if (roundCount % 4 !== 0) {
-          selectRound("shortBreak");
-        } else {
-          selectRound("longBreak");
-        }
-      } else {
-        selectRound("pomodoro");
-        setRoundCount(roundCount + 1);
-      }
+      setNextRound(round);
     }
   };
 
@@ -60,12 +64,14 @@ function Timer() {
         setSeconds(seconds - 1);
       } else {
         setIsTimerActive(false);
+        setNextRound(round);
       }
     },
     isTimerActive ? 1000 : null
   );
 
   const formattedTime = formatTime(seconds);
+  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   return (
     <div className={styles.container}>
@@ -82,6 +88,7 @@ function Timer() {
           <SkipIcon />
         </Button>
       )}
+      <div className={styles.roundMessage}>{roundMessage}</div>
       <RoundCount roundCount={roundCount} />
     </div>
   );
