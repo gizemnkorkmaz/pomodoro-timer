@@ -1,12 +1,27 @@
 import React from "react";
 import Button from "../Button/Button";
 
-function SelectRound({ selectRound }) {
+function SelectRound({ selectRound, isPomodoro, isShortBreak, isLongBreak }) {
   return (
     <div>
-      <Button onClick={() => selectRound("pomodoro")}>Pomodoro</Button>
-      <Button onClick={() => selectRound("shortBreak")}>Short Break</Button>
-      <Button onClick={() => selectRound("longBreak")}>Long Break</Button>
+      <Button
+        isButtonActive={isPomodoro}
+        onClick={() => selectRound("pomodoro")}
+      >
+        Pomodoro
+      </Button>
+      <Button
+        isButtonActive={isShortBreak}
+        onClick={() => selectRound("shortBreak")}
+      >
+        Short Break
+      </Button>
+      <Button
+        isButtonActive={isLongBreak}
+        onClick={() => selectRound("longBreak")}
+      >
+        Long Break
+      </Button>
     </div>
   );
 }
