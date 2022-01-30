@@ -82,6 +82,12 @@
     padding: 10px;
   }
 
+  .timerActive {
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+  }
+
   .Timer {
     font-size: 40px;
   }
