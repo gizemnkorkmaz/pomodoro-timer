@@ -1,11 +1,6 @@
 .RoundCount {
-  padding-top: 10px;
-  font-size: 20px;
-  color: rgba(255, 255, 255, 0.555);
-}
-
-@media screen and (max-width: 500px) {
-  .RoundCount {
-    font-size: 15px;
-  }
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: rgb(250, 250, 250);
+  font-style: italic;
 }
