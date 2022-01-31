@@ -1,0 +1,103 @@
+.Container {
+  width: 500px;
+  height: 320px;
+  padding: 20px 80px;
+  text-align: center;
+  background-color: rgba(52, 27, 53, 0.205);
+  box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
+  border-radius: 10px;
+  color: rgb(250, 250, 250);
+}
+
+.Timer {
+  font-size: 100px;
+  padding: 10px;
+}
+
+.TimerActive {
+  composes: Container;
+  background: linear-gradient(
+    -45deg,
+    rgba(238, 174, 202, 1),
+    rgba(129, 160, 196, 0.664),
+    rgba(207, 174, 189, 0.356),
+    rgb(128, 155, 185)
+  );
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.StartButton {
+  font-family: "Varela Round", sans-serif;
+  background-color: rgba(241, 189, 221, 0.363);
+  color: rgb(255, 255, 255);
+  padding: 10px 30px;
+  margin: 3px;
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
+}
+
+.SkipButton {
+  background: none;
+  border: none;
+  position: relative;
+  top: 10px;
+  left: 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.RoundMessage {
+  font-size: 16px;
+  padding: 10px;
+  font-style: italic;
+}
+
+@media screen and (max-width: 500px) {
+  .Container {
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+  }
+
+  .TimerActive {
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+  }
+
+  .Timer {
+    font-size: 40px;
+  }
+
+  .StartButton {
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  .SkipButton {
+    max-width: 10px;
+    max-height: 10px;
+    top: 7px;
+  }
+
+  .RoundMessage {
+    font-size: 10px;
+  }
+}
