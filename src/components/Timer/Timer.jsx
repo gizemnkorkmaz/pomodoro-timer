@@ -16,13 +16,14 @@ import formatTime from "../../utils/formatTime";
 import minutesToSeconds from "../../utils/minutesToSeconds";
 
 import useInterval from "../../hooks/useInterval";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function Timer() {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [round, setRound] = useState("pomodoro");
   const [currentRound, setCurrentCount] = useState(1);
-  const [isSoundOn, setIsSoundOn] = useState(true);
+  const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
   const countdownSound = new Audio(countdown);
 
   const selectRound = (round) => {
