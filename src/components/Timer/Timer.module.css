@@ -1,5 +1,4 @@
-.Container,
-.TimerActive {
+.Container {
   width: 500px;
   height: 320px;
   padding: 20px 80px;
@@ -16,6 +15,7 @@
 }
 
 .TimerActive {
+  composes: Container;
   background: linear-gradient(
     -45deg,
     rgba(238, 174, 202, 1),

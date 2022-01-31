@@ -1,5 +1,4 @@
-.Button,
-.ButtonActive {
+.Button {
   font-family: "Varela Round", sans-serif;
   background-color: rgba(241, 189, 221, 0.363);
   box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
@@ -12,9 +11,13 @@
   cursor: pointer;
 }
 
-.Button:focus,
-.Button:hover,
 .ButtonActive {
+  composes: Button;
+  background-color: rgba(219, 110, 179, 0.658);
+}
+
+.Button:focus,
+.Button:hover {
   background-color: rgba(219, 110, 179, 0.658);
 }
 
