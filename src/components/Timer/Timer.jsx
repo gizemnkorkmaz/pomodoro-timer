@@ -74,7 +74,7 @@ function Timer() {
   const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   return (
-    <div className={`${isTimerActive ? styles.timerActive : styles.container}`}>
+    <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
       <SelectRound
         selectRound={selectRound}
         isPomodoro={round === "pomodoro"}
@@ -83,17 +83,17 @@ function Timer() {
       />
       <div className={styles.Timer}>{formattedTime}</div>
       <Button
-        className={styles.startButton}
+        className={styles.StartButton}
         onClick={isTimerActive ? pauseTimer : startTimer}
       >
         {isTimerActive ? "Pause" : "Start"}
       </Button>
       {isTimerActive && (
-        <Button className={styles.skipButton} onClick={skipRound}>
+        <Button className={styles.SkipButton} onClick={skipRound}>
           <SkipIcon />
         </Button>
       )}
-      <div className={styles.roundMessage}>{roundMessage}</div>
+      <div className={styles.RoundMessage}>{roundMessage}</div>
       <CurrentRound currentRound={currentRound} />
     </div>
   );
