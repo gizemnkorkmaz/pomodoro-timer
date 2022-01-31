@@ -5,8 +5,8 @@ import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
 
 import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
-import { ReactComponent as SoundOn } from "../../assets/icons/SoundOnIcon.svg";
-import { ReactComponent as SoundOff } from "../../assets/icons/SoundOffIcon.svg";
+import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
+import { ReactComponent as SoundOffIcon } from "../../assets/icons/SoundOffIcon.svg";
 
 import countdown from "../../assets/sound/countdownSound.wav";
 
@@ -96,7 +96,7 @@ function Timer() {
       <div className={styles.Timer}>{formattedTime}</div>
       {isTimerActive && (
         <Button className={styles.SoundButton} onClick={toggleSound}>
-          {isSoundOn ? <SoundOn /> : <SoundOff />}
+          {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
         </Button>
       )}
       <Button
