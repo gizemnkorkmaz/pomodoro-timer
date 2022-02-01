@@ -24,7 +24,6 @@ function SelectRound({
         Long Break
       </Button>
       <Button
-        active={isPomodoro}
         className={styles.SettingsButton}
         onClick={() => setIsOpenCustomTimer(true)}
       >
