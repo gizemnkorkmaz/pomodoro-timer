@@ -71,7 +71,7 @@ function Timer() {
     () => {
       if (seconds) {
         setSeconds(seconds - 1);
-        if (isSoundOn && seconds === 3) {
+        if (seconds === 3 && isSoundOn) {
           countdownSound.play();
         }
       } else {
