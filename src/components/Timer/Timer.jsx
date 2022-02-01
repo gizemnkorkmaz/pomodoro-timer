@@ -8,7 +8,7 @@ import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
 import { ReactComponent as SoundOffIcon } from "../../assets/icons/SoundOffIcon.svg";
 
-import countdown from "../../assets/sound/countdownSound.wav";
+import countdownSoundEffect from "../../assets/sound/countdownSound.wav";
 
 import styles from "./Timer.module.css";
 
@@ -24,7 +24,7 @@ function Timer() {
   const [round, setRound] = useState("pomodoro");
   const [currentRound, setCurrentCount] = useState(1);
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
-  const countdownSound = new Audio(countdown);
+  const countdownSound = new Audio(countdownSoundEffect);
 
   const selectRound = (round) => {
     const roundTime = {
