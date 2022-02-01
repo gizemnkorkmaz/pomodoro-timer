@@ -7,7 +7,7 @@ import styles from "./Modal.module.css";
 
 function Modal({ children, isOpen, setIsOpen, isShowCloseButton }) {
   const closeModal = () => {
-    setIsOpen(isOpen);
+    setIsOpen(!isOpen);
   };
 
   return (
