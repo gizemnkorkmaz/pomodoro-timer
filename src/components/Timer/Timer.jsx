@@ -1,22 +1,30 @@
 import React, { useState } from "react";
 
-import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
-import styles from "./Timer.module.css";
-
 import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
+
+import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
+import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
+import { ReactComponent as SoundOffIcon } from "../../assets/icons/SoundOffIcon.svg";
+
+import countdownSoundSource from "../../assets/sound/countdownSound.wav";
+
+import styles from "./Timer.module.css";
 
 import formatTime from "../../utils/formatTime";
 import minutesToSeconds from "../../utils/minutesToSeconds";
 
 import useInterval from "../../hooks/useInterval";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function Timer() {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
   const [isTimerActive, setIsTimerActive] = useState(false);
   const [round, setRound] = useState("pomodoro");
   const [currentRound, setCurrentCount] = useState(1);
+  const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
+  const countdownSound = new Audio(countdownSoundSource);
 
   const selectRound = (round) => {
     const roundTime = {
@@ -34,6 +42,7 @@ function Timer() {
 
   const pauseTimer = () => setIsTimerActive(false);
   const startTimer = () => setIsTimerActive(true);
+  const toggleSound = () => setIsSoundOn(!isSoundOn);
 
   const setNextRound = (round) => {
     if (round === "pomodoro") {
@@ -62,6 +71,9 @@ function Timer() {
     () => {
       if (seconds) {
         setSeconds(seconds - 1);
+        if (seconds === 3 && isSoundOn) {
+          countdownSound.play();
+        }
       } else {
         setIsTimerActive(false);
         setNextRound(round);
@@ -82,6 +94,11 @@ function Timer() {
         isLongBreak={round === "longBreak"}
       />
       <div className={styles.Timer}>{formattedTime}</div>
+      {isTimerActive && (
+        <Button className={styles.SoundButton} onClick={toggleSound}>
+          {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
+        </Button>
+      )}
       <Button
         className={styles.StartButton}
         onClick={isTimerActive ? pauseTimer : startTimer}

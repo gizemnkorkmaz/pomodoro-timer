@@ -57,10 +57,14 @@
   background: none;
   border: none;
   position: relative;
+  margin: 15px;
   top: 10px;
-  left: 20px;
   padding: 0;
   cursor: pointer;
+}
+
+.SoundButton {
+  composes: SkipButton;
 }
 
 .RoundMessage {
@@ -78,7 +82,7 @@
 
   .TimerActive {
     width: 350px;
-    height: 200px;
+    height: 220px;
     padding: 10px;
   }
 
@@ -92,9 +96,13 @@
   }
 
   .SkipButton {
-    max-width: 10px;
-    max-height: 10px;
+    max-width: 15px;
+    max-height: 15px;
     top: 7px;
+  }
+
+  .SoundButton {
+    composes: SkipButton;
   }
 
   .RoundMessage {
