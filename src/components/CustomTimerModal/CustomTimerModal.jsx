@@ -10,7 +10,6 @@ function CustomTimerModal({ isOpen, setIsOpen, isShowCloseButton }) {
       setIsOpen={setIsOpen}
       isShowCloseButton={isShowCloseButton}
     >
-      <h2>Choose your pomodoro time:</h2>
       <Button onClick={() => setIsOpen(false)}>Save</Button>
     </Modal>
   );
