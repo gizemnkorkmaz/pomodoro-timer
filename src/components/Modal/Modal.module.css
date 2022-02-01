@@ -1,0 +1,32 @@
+.Modal {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  padding: 20px 80px;
+  border-radius: 10px;
+  background-color: rgb(201, 135, 177);
+  color: white;
+  top: 60%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.CloseButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .Modal {
+    width: 350px;
+    height: 350px;
+    padding: 10px;
+  }
+}
