@@ -121,8 +121,11 @@ function Timer() {
       </div>
       <CustomTimerModal
         isOpen={isOpenCustomTimer}
+        isShowCloseButton={true}
         setIsOpen={setIsOpenCustomTimer}
-        isShowCloseButton={false}
+        setSeconds={setSeconds}
+        setIsTimerActive={setIsTimerActive}
+        setRound={setRound}
       />
     </>
   );
