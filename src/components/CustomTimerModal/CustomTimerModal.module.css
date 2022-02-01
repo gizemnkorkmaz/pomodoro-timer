@@ -41,3 +41,9 @@
   text-transform: uppercase;
   box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
 }
+
+@media (max-width: 500px) {
+  .CustomTimerContainer {
+    padding-bottom: 10px;
+  }
+}
