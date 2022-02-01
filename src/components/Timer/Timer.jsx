@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
+import CustomTimerModal from "../CustomTimerModal/CustomTimerModal";
 
 import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
@@ -24,6 +25,7 @@ function Timer() {
   const [round, setRound] = useState("pomodoro");
   const [currentRound, setCurrentCount] = useState(1);
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
+  const [isOpenCustomTimer, setIsOpenCustomTimer] = useState(false);
   const countdownSound = new Audio(countdownSoundSource);
 
   const selectRound = (round) => {
@@ -86,33 +88,43 @@ function Timer() {
   const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   return (
-    <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      <SelectRound
-        selectRound={selectRound}
-        isPomodoro={round === "pomodoro"}
-        isShortBreak={round === "shortBreak"}
-        isLongBreak={round === "longBreak"}
-      />
-      <div className={styles.Timer}>{formattedTime}</div>
-      {isTimerActive && (
-        <Button className={styles.SoundButton} onClick={toggleSound}>
-          {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
-        </Button>
-      )}
-      <Button
-        className={styles.StartButton}
-        onClick={isTimerActive ? pauseTimer : startTimer}
+    <>
+      <div
+        className={`${isTimerActive ? styles.TimerActive : styles.Container}`}
       >
-        {isTimerActive ? "Pause" : "Start"}
-      </Button>
-      {isTimerActive && (
-        <Button className={styles.SkipButton} onClick={skipRound}>
-          <SkipIcon />
+        <SelectRound
+          selectRound={selectRound}
+          isPomodoro={round === "pomodoro"}
+          isShortBreak={round === "shortBreak"}
+          isLongBreak={round === "longBreak"}
+          setIsOpenCustomTimer={setIsOpenCustomTimer}
+        />
+        <div className={styles.Timer}>{formattedTime}</div>
+        {isTimerActive && (
+          <Button className={styles.SoundButton} onClick={toggleSound}>
+            {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
+          </Button>
+        )}
+        <Button
+          className={styles.StartButton}
+          onClick={isTimerActive ? pauseTimer : startTimer}
+        >
+          {isTimerActive ? "Pause" : "Start"}
         </Button>
-      )}
-      <div className={styles.RoundMessage}>{roundMessage}</div>
-      <CurrentRound currentRound={currentRound} />
-    </div>
+        {isTimerActive && (
+          <Button className={styles.SkipButton} onClick={skipRound}>
+            <SkipIcon />
+          </Button>
+        )}
+        <div className={styles.RoundMessage}>{roundMessage}</div>
+        <CurrentRound currentRound={currentRound} />
+      </div>
+      <CustomTimerModal
+        isOpen={isOpenCustomTimer}
+        setIsOpen={setIsOpenCustomTimer}
+        isShowCloseButton={false}
+      />
+    </>
   );
 }
 
