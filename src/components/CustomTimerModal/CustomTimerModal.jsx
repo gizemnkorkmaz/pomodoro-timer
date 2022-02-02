@@ -14,12 +14,16 @@ function CustomTimerModal({
   setSeconds,
   setIsTimerActive,
   setRound,
+  customTime,
+  setCustomTime,
+  setIsCustomTime,
 }) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [customTime, setCustomTime] = useState(25);
 
   const setCustomTimer = (event) => {
     setIsTimerActive(false);
+    setIsCustomTime(true);
+    setRound("custom");
 
     const customTimeInSeconds = minutesToSeconds(event.target.value);
 
@@ -31,8 +35,6 @@ function CustomTimerModal({
     } else {
       setIsButtonDisabled(true);
     }
-
-    setRound("pomodoro");
   };
 
   return (
