@@ -29,9 +29,9 @@ function CustomTimerModal({
       isShowCloseButton={isShowCloseButton}
     >
       <div className={styles.CustomTimerContainer}>
-        <h2>Set your own focus time:</h2>
+        <h2>Set your own focus time</h2>
         <label className={styles.InputLabel}>
-          Time (in minutes)
+          Time (in minutes):
           <input
             type="number"
             placeholder="e.g. 25"
