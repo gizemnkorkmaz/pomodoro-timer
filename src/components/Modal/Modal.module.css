@@ -1,9 +1,9 @@
 .Modal {
   position: absolute;
   width: 500px;
-  height: 350px;
+  height: 320px;
   padding: 20px 80px;
-  margin: 20px 0;
+  margin: 32px 0;
   border-radius: 10px;
   background: linear-gradient(
     0deg,
@@ -32,9 +32,8 @@
 @media (max-width: 500px) {
   .Modal {
     width: 350px;
-    height: 300px;
+    height: 220px;
     padding: 10px;
-    margin: 0;
-    top: 55%;
+    margin: 30px 0;
   }
 }
