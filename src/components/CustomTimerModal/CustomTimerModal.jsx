@@ -16,14 +16,17 @@ function CustomTimerModal({
   setRound,
 }) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [customTime, setCustomTime] = useState(25);
 
   const setCustomTimer = (event) => {
     setIsTimerActive(false);
 
-    const customTime = minutesToSeconds(event.target.value);
+    const customTimeInSeconds = minutesToSeconds(event.target.value);
 
-    if (customTime > 0) {
-      setSeconds(customTime);
+    setCustomTime(event.target.value);
+
+    if (customTimeInSeconds > 0) {
+      setSeconds(customTimeInSeconds);
       setIsButtonDisabled(false);
     } else {
       setIsButtonDisabled(true);
@@ -46,6 +49,7 @@ function CustomTimerModal({
             type="number"
             min="0"
             placeholder="e.g. 25"
+            value={customTime}
             onChange={(event) => setCustomTimer(event)}
             className={styles.InputArea}
           />
