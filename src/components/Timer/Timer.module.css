@@ -107,5 +107,6 @@
 
   .RoundMessage {
     font-size: 10px;
+    padding-bottom: 7px;
   }
 }
