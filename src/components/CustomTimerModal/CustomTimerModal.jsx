@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
@@ -15,10 +15,20 @@ function CustomTimerModal({
   setIsTimerActive,
   setRound,
 }) {
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
   const setCustomTimer = (event) => {
     setIsTimerActive(false);
+
     const customTime = minutesToSeconds(event.target.value);
-    setSeconds(customTime);
+
+    if (customTime > 0) {
+      setSeconds(customTime);
+      setIsButtonDisabled(false);
+    } else {
+      setIsButtonDisabled(true);
+    }
+
     setRound("pomodoro");
   };
 
@@ -34,13 +44,18 @@ function CustomTimerModal({
           Time (in minutes):
           <input
             type="number"
+            min="0"
             placeholder="e.g. 25"
             onChange={(event) => setCustomTimer(event)}
             className={styles.InputArea}
           />
         </label>
       </div>
-      <Button className={styles.SaveButton} onClick={() => setIsOpen(false)}>
+      <Button
+        className={styles.SaveButton}
+        onClick={() => setIsOpen(false)}
+        disabled={isButtonDisabled}
+      >
         Save
       </Button>
     </Modal>
