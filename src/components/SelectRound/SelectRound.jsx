@@ -10,11 +10,15 @@ function SelectRound({
   isPomodoro,
   isShortBreak,
   isLongBreak,
+  isCustomTime,
   setIsOpenCustomTimer,
 }) {
   return (
     <div>
-      <Button active={isPomodoro} onClick={() => selectRound("pomodoro")}>
+      <Button
+        active={isPomodoro || isCustomTime}
+        onClick={() => selectRound("pomodoro")}
+      >
         Pomodoro
       </Button>
       <Button active={isShortBreak} onClick={() => selectRound("shortBreak")}>
