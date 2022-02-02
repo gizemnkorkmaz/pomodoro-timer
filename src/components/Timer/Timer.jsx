@@ -26,6 +26,8 @@ function Timer() {
   const [currentRound, setCurrentCount] = useState(1);
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
   const [isOpenCustomTimer, setIsOpenCustomTimer] = useState(false);
+  const [isCustomTime, setIsCustomTime] = useState(false);
+  const [customTime, setCustomTime] = useState(25);
   const countdownSound = new Audio(countdownSoundSource);
 
   const selectRound = (round) => {
@@ -33,6 +35,7 @@ function Timer() {
       pomodoro: 25,
       longBreak: 15,
       shortBreak: 5,
+      custom: customTime,
     };
 
     const roundTimeInSeconds = minutesToSeconds(roundTime[round]);
@@ -47,14 +50,19 @@ function Timer() {
   const toggleSound = () => setIsSoundOn(!isSoundOn);
 
   const setNextRound = (round) => {
-    if (round === "pomodoro") {
+    if (round === "pomodoro" || round === "custom") {
       if (currentRound % 4 !== 0) {
         selectRound("shortBreak");
       } else {
         selectRound("longBreak");
       }
     } else {
-      selectRound("pomodoro");
+      if (isCustomTime) {
+        selectRound("custom");
+      } else {
+        selectRound("pomodoro");
+      }
+
       setCurrentCount(currentRound + 1);
     }
   };
@@ -85,7 +93,10 @@ function Timer() {
   );
 
   const formattedTime = formatTime(seconds);
-  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
+  const roundMessage =
+    round === "pomodoro" || round === "custom"
+      ? "Stay focused!"
+      : "Break time!";
 
   return (
     <>
@@ -97,6 +108,7 @@ function Timer() {
           isPomodoro={round === "pomodoro"}
           isShortBreak={round === "shortBreak"}
           isLongBreak={round === "longBreak"}
+          isCustomTime={round === "custom"}
           setIsOpenCustomTimer={setIsOpenCustomTimer}
         />
         <div className={styles.Timer}>{formattedTime}</div>
@@ -126,6 +138,9 @@ function Timer() {
         setSeconds={setSeconds}
         setIsTimerActive={setIsTimerActive}
         setRound={setRound}
+        customTime={customTime}
+        setCustomTime={setCustomTime}
+        setIsCustomTime={setIsCustomTime}
       />
     </>
   );
