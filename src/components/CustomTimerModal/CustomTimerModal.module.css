@@ -44,6 +44,15 @@
 
 @media (max-width: 500px) {
   .CustomTimerContainer {
-    padding-bottom: 10px;
+    padding: 0;
+  }
+  .SaveButton {
+    font-size: 12px;
+  }
+
+  .InputArea {
+    display: block;
+    margin: 20px auto;
+    font-size: 12px;
   }
 }
