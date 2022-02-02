@@ -19,10 +19,10 @@
   composes: Container;
   background: linear-gradient(
     -45deg,
-    rgba(238, 174, 202, 1),
+    rgb(211, 145, 174) 0%,
     rgba(129, 160, 196, 0.664),
     rgba(207, 174, 189, 0.356),
-    rgb(128, 155, 185)
+    rgb(142, 174, 211) 100%
   );
   background-size: 400% 400%;
   animation: gradient 8s ease infinite;
