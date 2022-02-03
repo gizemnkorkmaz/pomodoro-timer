@@ -23,10 +23,7 @@ function SelectRound({
 
   return (
     <div>
-      <Button
-        active={isPomodoro || isCustomTime}
-        onClick={() => selectFocusTime()}
-      >
+      <Button active={isPomodoro || isCustomTime} onClick={selectFocusTime}>
         Pomodoro
       </Button>
       <Button active={isShortBreak} onClick={() => selectRound("shortBreak")}>
