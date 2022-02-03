@@ -13,21 +13,16 @@ function CustomTimerModal({
   setIsOpen,
   setSeconds,
   setIsTimerActive,
-  setRound,
   customTime,
   setCustomTime,
-  setIsCustomTime,
 }) {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const setCustomTimer = (event) => {
     setIsTimerActive(false);
-    setIsCustomTime(true);
-    setRound("custom");
+    setCustomTime(event.target.value);
 
     const customTimeInSeconds = minutesToSeconds(event.target.value);
-
-    setCustomTime(event.target.value);
 
     if (customTimeInSeconds > 0) {
       setSeconds(customTimeInSeconds);
