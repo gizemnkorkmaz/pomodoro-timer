@@ -1,0 +1,39 @@
+.Modal {
+  position: absolute;
+  width: 500px;
+  height: 320px;
+  padding: 20px 80px;
+  margin: 32px 0;
+  border-radius: 10px;
+  background: linear-gradient(
+    0deg,
+    rgb(187, 137, 159) 0%,
+    rgb(107, 135, 167) 100%
+  );
+  box-shadow: rgba(32, 18, 27, 0.363) 0px 5px 15px;
+  color: white;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.CloseButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .Modal {
+    width: 350px;
+    height: 220px;
+    padding: 10px;
+    margin: 30px 0;
+  }
+}
