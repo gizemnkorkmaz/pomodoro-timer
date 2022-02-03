@@ -13,7 +13,7 @@ function SelectRound({
   isCustomTime,
   setIsOpenCustomTimer,
 }) {
-  const selectFocusTime = () => {
+  const showFocusTime = () => {
     if (isPomodoro) {
       return selectRound("pomodoro");
     } else {
@@ -23,7 +23,7 @@ function SelectRound({
 
   return (
     <div>
-      <Button active={isPomodoro || isCustomTime} onClick={selectFocusTime}>
+      <Button active={isPomodoro || isCustomTime} onClick={showFocusTime}>
         Pomodoro
       </Button>
       <Button active={isShortBreak} onClick={() => selectRound("shortBreak")}>
