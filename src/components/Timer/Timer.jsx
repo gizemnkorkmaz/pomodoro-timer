@@ -69,8 +69,12 @@ function Timer() {
     }
   };
 
+  const formattedTime = formatTime(seconds);
+  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
+
   useInterval(
     () => {
+      document.title = `${formatTime(seconds)} - ${roundMessage}`;
       if (seconds) {
         setSeconds(seconds - 1);
         if (seconds === 3 && isSoundOn) {
@@ -83,9 +87,6 @@ function Timer() {
     },
     isTimerActive ? 1000 : null
   );
-
-  const formattedTime = formatTime(seconds);
-  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   return (
     <>
