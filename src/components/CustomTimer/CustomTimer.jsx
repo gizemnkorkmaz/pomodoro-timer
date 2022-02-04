@@ -45,7 +45,6 @@ function CustomTimer({
             className={styles.InputArea}
           />
         </label>
-
         <Button
           className={styles.SaveButton}
           onClick={() => setIsOpen(false)}
