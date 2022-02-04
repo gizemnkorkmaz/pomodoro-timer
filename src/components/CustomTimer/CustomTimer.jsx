@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 
 import minutesToSeconds from "../../utils/minutesToSeconds";
+import formatTime from "../../utils/formatTime";
 
 import styles from "./CustomTimer.module.css";
 
@@ -29,6 +30,14 @@ function CustomTimer({
     }
   };
 
+  const saveCustomTime = () => {
+    setIsOpenCustomTimer(false);
+
+    document.title = `${formatTime(
+      minutesToSeconds(customTime)
+    )} - Stay focused!`;
+  };
+
   return (
     <>
       <h2>Set your own focus time</h2>
@@ -45,7 +54,7 @@ function CustomTimer({
       </label>
       <Button
         className={styles.SaveButton}
-        onClick={() => setIsOpenCustomTimer(false)}
+        onClick={saveCustomTime}
         disabled={isButtonDisabled}
       >
         Save
