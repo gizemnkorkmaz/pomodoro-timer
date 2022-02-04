@@ -1,0 +1,58 @@
+.InputArea {
+  padding: 5px 0;
+  background-color: rgba(230, 216, 216, 0.904);
+  box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
+  border: none;
+  border-radius: 5px;
+  margin: 20px;
+  font-family: "Varela Round", sans-serif;
+  color: rgb(56, 41, 59);
+  font-size: 20px;
+  text-align: center;
+}
+
+.InputArea::placeholder {
+  font-style: italic;
+  text-align: center;
+}
+
+.InputLabel {
+  text-align: center;
+  font-size: 14px;
+  font-style: italic;
+  margin: 0 auto;
+}
+
+.InputArea:invalid {
+  border: 1.5px solid red;
+}
+
+.SaveButton {
+  font-family: "Varela Round", sans-serif;
+  background-color: rgba(241, 189, 221, 0.363);
+  color: rgb(255, 255, 255);
+  padding: 10px 30px;
+  margin: 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
+}
+
+@media (max-width: 500px) {
+  .CustomTimerContainer {
+    padding: 0;
+  }
+
+  .SaveButton {
+    font-size: 12px;
+  }
+
+  .InputArea {
+    display: block;
+    margin: 20px auto;
+    font-size: 12px;
+  }
+}
