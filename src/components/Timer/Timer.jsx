@@ -90,7 +90,7 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      {!isOpenCustomTimer && (
+      {!isOpenCustomTimer ? (
         <>
           <SelectRound
             selectRound={selectRound}
@@ -119,16 +119,17 @@ function Timer() {
           <div className={styles.RoundMessage}>{roundMessage}</div>
           <CurrentRound currentRound={currentRound} />
         </>
+      ) : (
+        <CustomTimer
+          isOpenCustomTimer={isOpenCustomTimer}
+          setIsOpenCustomTimer={setIsOpenCustomTimer}
+          setSeconds={setSeconds}
+          setIsTimerActive={setIsTimerActive}
+          setRound={setRound}
+          customTime={customTime}
+          setCustomTime={setCustomTime}
+        />
       )}
-      <CustomTimer
-        isOpen={isOpenCustomTimer}
-        setIsOpen={setIsOpenCustomTimer}
-        setSeconds={setSeconds}
-        setIsTimerActive={setIsTimerActive}
-        setRound={setRound}
-        customTime={customTime}
-        setCustomTime={setCustomTime}
-      />
     </div>
   );
 }

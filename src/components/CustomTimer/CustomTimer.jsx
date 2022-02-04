@@ -7,8 +7,7 @@ import minutesToSeconds from "../../utils/minutesToSeconds";
 import styles from "./CustomTimer.module.css";
 
 function CustomTimer({
-  isOpen,
-  setIsOpen,
+  setIsOpenCustomTimer,
   setSeconds,
   setIsTimerActive,
   customTime,
@@ -31,29 +30,27 @@ function CustomTimer({
   };
 
   return (
-    isOpen && (
-      <>
-        <h2>Set your own focus time</h2>
-        <label className={styles.InputLabel}>
-          Time (in minutes):
-          <input
-            type="number"
-            min="0"
-            placeholder="e.g. 25"
-            value={customTime}
-            onChange={(event) => setCustomTimer(event)}
-            className={styles.InputArea}
-          />
-        </label>
-        <Button
-          className={styles.SaveButton}
-          onClick={() => setIsOpen(false)}
-          disabled={isButtonDisabled}
-        >
-          Save
-        </Button>
-      </>
-    )
+    <>
+      <h2>Set your own focus time</h2>
+      <label className={styles.InputLabel}>
+        Time (in minutes):
+        <input
+          type="number"
+          min="0"
+          placeholder="e.g. 25"
+          value={customTime}
+          onChange={(event) => setCustomTimer(event)}
+          className={styles.InputArea}
+        />
+      </label>
+      <Button
+        className={styles.SaveButton}
+        onClick={() => setIsOpenCustomTimer(false)}
+        disabled={isButtonDisabled}
+      >
+        Save
+      </Button>
+    </>
   );
 }
 
