@@ -28,7 +28,12 @@ function Timer() {
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
   const [isOpenCustomTimer, setIsOpenCustomTimer] = useState(false);
   const [customTime, setCustomTime] = useState(25);
+
   const countdownSound = new Audio(countdownSoundSource);
+  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
+
+  const updateTitle = (time, message) =>
+    (document.title = `${formatTime(time)} - ${message}`);
 
   const selectRound = (round) => {
     const roundTime = {
@@ -42,6 +47,7 @@ function Timer() {
     setRound(round);
     setSeconds(roundTimeInSeconds);
     setIsTimerActive(false);
+    updateTitle(roundTimeInSeconds, roundMessage);
   };
 
   const pauseTimer = () => setIsTimerActive(false);
@@ -71,11 +77,10 @@ function Timer() {
   };
 
   const formattedTime = formatTime(seconds);
-  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   useInterval(
     () => {
-      document.title = `${formatTime(seconds)} - ${roundMessage}`;
+      updateTitle(seconds, roundMessage);
       if (seconds) {
         setSeconds(seconds - 1);
         if (seconds === 3 && isSoundOn) {
