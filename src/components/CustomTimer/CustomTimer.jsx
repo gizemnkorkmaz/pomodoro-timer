@@ -26,9 +26,7 @@ function CustomTimer({
       setSeconds(customTimeInSeconds);
     }
 
-    document.title = `${formatTime(
-      minutesToSeconds(customTime)
-    )} - Stay focused!`;
+    document.title = formatTime(minutesToSeconds(customTime));
 
     setIsOpenCustomTimer(false);
   };
