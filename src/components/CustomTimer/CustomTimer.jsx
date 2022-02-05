@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 
 import minutesToSeconds from "../../utils/minutesToSeconds";
-import formatTime from "../../utils/formatTime";
 
 import styles from "./CustomTimer.module.css";
 
