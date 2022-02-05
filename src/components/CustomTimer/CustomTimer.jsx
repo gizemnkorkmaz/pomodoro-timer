@@ -29,7 +29,7 @@ function CustomTimer({
       setSeconds(customTimeInSeconds);
     }
 
-    document.title = formatTime(minutesToSeconds(customTime));
+    document.title = formatTime(minutesToSeconds(newTimer));
 
     setIsOpenCustomTimer(false);
   };
