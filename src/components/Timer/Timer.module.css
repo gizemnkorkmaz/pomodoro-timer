@@ -1,6 +1,6 @@
 .Container {
   width: 500px;
-  height: 320px;
+  height: 350px;
   padding: 20px 80px;
   text-align: center;
   background-color: rgba(52, 27, 53, 0.205);
@@ -77,14 +77,12 @@
 @media screen and (max-width: 500px) {
   .Container {
     width: 350px;
-    height: 200px;
+    height: auto;
     padding: 10px;
   }
 
   .TimerActive {
-    width: 350px;
-    height: 220px;
-    padding: 10px;
+    composes: Container;
   }
 
   .Timer {
@@ -109,5 +107,14 @@
   .RoundMessage {
     font-size: 10px;
     padding-bottom: 7px;
+  }
+
+  .CloseIcon {
+    left: 155px;
+    bottom: 5px;
+  }
+
+  .SettingsIcon {
+    composes: CloseIcon;
   }
 }
