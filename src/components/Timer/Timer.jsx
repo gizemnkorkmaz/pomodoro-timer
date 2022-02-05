@@ -4,7 +4,7 @@ import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
 import CustomTimer from "../CustomTimer/CustomTimer";
-import ToggleTimer from "../ToggleTimer/ToggleTimer";
+import ToggleTimerButton from "../ToggleTimerButton/ToggleTimerButton";
 
 import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
@@ -92,7 +92,7 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      <ToggleTimer
+      <ToggleTimerButton
         isTimerActive={isTimerActive}
         isOpenCustomTimer={isOpenCustomTimer}
         setIsOpenCustomTimer={setIsOpenCustomTimer}

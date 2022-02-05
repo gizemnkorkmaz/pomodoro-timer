@@ -3,11 +3,11 @@ import React from "react";
 import { ReactComponent as SettingsIcon } from "../../assets/icons/SettingsIcon.svg";
 import { ReactComponent as CloseIcon } from "../../assets/icons/CloseIcon.svg";
 
-import styles from "./ToggleTimer.module.css";
+import styles from "./ToggleTimerButton.module.css";
 
 import Button from "../Button/Button";
 
-function ToggleTimer({
+function ToggleTimerButton({
   isTimerActive,
   isOpenCustomTimer,
   setIsOpenCustomTimer,
@@ -29,4 +29,4 @@ function ToggleTimer({
   );
 }
 
-export default ToggleTimer;
+export default ToggleTimerButton;
