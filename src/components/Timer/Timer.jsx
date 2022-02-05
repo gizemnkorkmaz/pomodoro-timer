@@ -92,14 +92,13 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      {round === "pomodoro" && (
-        <ToggleTimer
-          isTimerActive={isTimerActive}
-          isOpenCustomTimer={isOpenCustomTimer}
-          setIsOpenCustomTimer={setIsOpenCustomTimer}
-          round={round}
-        />
-      )}
+      <ToggleTimer
+        isTimerActive={isTimerActive}
+        isOpenCustomTimer={isOpenCustomTimer}
+        setIsOpenCustomTimer={setIsOpenCustomTimer}
+        round={round}
+      />
+
       {!isOpenCustomTimer ? (
         <>
           <SelectRound
