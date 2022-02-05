@@ -27,9 +27,8 @@ function CustomTimer({
 
     if (customTimeInSeconds > 0) {
       setSeconds(customTimeInSeconds);
+      document.title = formatTime(minutesToSeconds(newTimer));
     }
-
-    document.title = formatTime(minutesToSeconds(newTimer));
 
     setIsOpenCustomTimer(false);
   };
@@ -51,7 +50,7 @@ function CustomTimer({
       <Button
         className={styles.SaveButton}
         onClick={saveCustomTime}
-        disabled={customTime <= 0}
+        disabled={newTimer <= 0}
       >
         Save
       </Button>
