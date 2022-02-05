@@ -1,3 +1,11 @@
+.ShowButton {
+  visibility: initial;
+}
+
+.HideButton {
+  visibility: hidden;
+}
+
 .CloseIcon {
   background: none;
   border: none;
