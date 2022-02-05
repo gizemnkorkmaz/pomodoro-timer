@@ -28,12 +28,7 @@ function Timer() {
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
   const [isOpenCustomTimer, setIsOpenCustomTimer] = useState(false);
   const [customTime, setCustomTime] = useState(25);
-
   const countdownSound = new Audio(countdownSoundSource);
-  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
-
-  const updateTitle = (time, message) =>
-    (document.title = `${formatTime(time)} - ${message}`);
 
   const selectRound = (round) => {
     const roundTime = {
@@ -47,7 +42,7 @@ function Timer() {
     setRound(round);
     setSeconds(roundTimeInSeconds);
     setIsTimerActive(false);
-    updateTitle(roundTimeInSeconds, roundMessage);
+    document.title = formatTime(roundTimeInSeconds);
   };
 
   const pauseTimer = () => setIsTimerActive(false);
@@ -77,12 +72,13 @@ function Timer() {
   };
 
   const formattedTime = formatTime(seconds);
+  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   useInterval(
     () => {
-      updateTitle(seconds, roundMessage);
       if (seconds) {
         setSeconds(seconds - 1);
+        document.title = `${formatTime(seconds)} - ${roundMessage}`;
         if (seconds === 3 && isSoundOn) {
           countdownSound.play();
         }
@@ -96,11 +92,14 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      <ToggleTimer
-        isTimerActive={isTimerActive}
-        isOpenCustomTimer={isOpenCustomTimer}
-        setIsOpenCustomTimer={setIsOpenCustomTimer}
-      />
+      {round === "pomodoro" && (
+        <ToggleTimer
+          isTimerActive={isTimerActive}
+          isOpenCustomTimer={isOpenCustomTimer}
+          setIsOpenCustomTimer={setIsOpenCustomTimer}
+          round={round}
+        />
+      )}
       {!isOpenCustomTimer ? (
         <>
           <SelectRound
