@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
 import CustomTimer from "../CustomTimer/CustomTimer";
+import ToggleTimer from "../ToggleTimer/ToggleTimer";
 
 import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
@@ -90,6 +91,11 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
+      <ToggleTimer
+        isTimerActive={isTimerActive}
+        isOpenCustomTimer={isOpenCustomTimer}
+        setIsOpenCustomTimer={setIsOpenCustomTimer}
+      />
       {!isOpenCustomTimer ? (
         <>
           <SelectRound
@@ -97,7 +103,6 @@ function Timer() {
             isPomodoro={round === "pomodoro"}
             isShortBreak={round === "shortBreak"}
             isLongBreak={round === "longBreak"}
-            setIsOpenCustomTimer={setIsOpenCustomTimer}
           />
           <div className={styles.Timer}>{formattedTime}</div>
           {isTimerActive && (
@@ -121,11 +126,9 @@ function Timer() {
         </>
       ) : (
         <CustomTimer
-          isOpenCustomTimer={isOpenCustomTimer}
           setIsOpenCustomTimer={setIsOpenCustomTimer}
           setSeconds={setSeconds}
           setIsTimerActive={setIsTimerActive}
-          setRound={setRound}
           customTime={customTime}
           setCustomTime={setCustomTime}
         />
