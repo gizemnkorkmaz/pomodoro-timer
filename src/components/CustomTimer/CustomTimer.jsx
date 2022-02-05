@@ -27,7 +27,7 @@ function CustomTimer({
 
     if (customTimeInSeconds > 0) {
       setSeconds(customTimeInSeconds);
-      document.title = formatTime(minutesToSeconds(newTimer));
+      document.title = "Pomodoro Timer";
     }
 
     setIsOpenCustomTimer(false);

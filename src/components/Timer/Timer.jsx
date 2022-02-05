@@ -42,7 +42,7 @@ function Timer() {
     setRound(round);
     setSeconds(roundTimeInSeconds);
     setIsTimerActive(false);
-    document.title = formatTime(roundTimeInSeconds);
+    document.title = "Pomodoro Timer";
   };
 
   const pauseTimer = () => setIsTimerActive(false);
