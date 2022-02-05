@@ -11,11 +11,17 @@ function ToggleTimer({
   isTimerActive,
   isOpenCustomTimer,
   setIsOpenCustomTimer,
+  round,
 }) {
+  const openCustomTimer = () => {
+    if (round === "pomodoro") {
+      setIsOpenCustomTimer(!isOpenCustomTimer);
+    }
+  };
   return (
     <Button
       className={`${isTimerActive ? styles.SettingsIcon : styles.CloseIcon}`}
-      onClick={() => setIsOpenCustomTimer(!isOpenCustomTimer)}
+      onClick={openCustomTimer}
     >
       {isOpenCustomTimer ? <CloseIcon /> : <SettingsIcon />}
     </Button>
