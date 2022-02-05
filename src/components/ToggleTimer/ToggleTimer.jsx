@@ -13,18 +13,19 @@ function ToggleTimer({
   setIsOpenCustomTimer,
   round,
 }) {
-  const openCustomTimer = () => {
-    if (round === "pomodoro") {
-      setIsOpenCustomTimer(!isOpenCustomTimer);
-    }
-  };
   return (
-    <Button
-      className={`${isTimerActive ? styles.SettingsIcon : styles.CloseIcon}`}
-      onClick={openCustomTimer}
+    <div
+      className={`${
+        round === "pomodoro" ? styles.ShowButton : styles.HideButton
+      }`}
     >
-      {isOpenCustomTimer ? <CloseIcon /> : <SettingsIcon />}
-    </Button>
+      <Button
+        className={`${isTimerActive ? styles.SettingsIcon : styles.CloseIcon}`}
+        onClick={() => setIsOpenCustomTimer(!isOpenCustomTimer)}
+      >
+        {isOpenCustomTimer ? <CloseIcon /> : <SettingsIcon />}
+      </Button>
+    </div>
   );
 }
 
