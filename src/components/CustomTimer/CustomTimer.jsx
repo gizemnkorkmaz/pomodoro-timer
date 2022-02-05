@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Button from "../Button/Button";
 
@@ -14,28 +14,23 @@ function CustomTimer({
   customTime,
   setCustomTime,
 }) {
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-
   const setCustomTimer = (event) => {
     setIsTimerActive(false);
     setCustomTime(event.target.value);
-
-    const customTimeInSeconds = minutesToSeconds(event.target.value);
-
-    if (customTimeInSeconds > 0) {
-      setSeconds(customTimeInSeconds);
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
   };
 
   const saveCustomTime = () => {
-    setIsOpenCustomTimer(false);
+    const customTimeInSeconds = minutesToSeconds(customTime);
+
+    if (customTimeInSeconds > 0) {
+      setSeconds(customTimeInSeconds);
+    }
 
     document.title = `${formatTime(
       minutesToSeconds(customTime)
     )} - Stay focused!`;
+
+    setIsOpenCustomTimer(false);
   };
 
   return (
@@ -55,7 +50,7 @@ function CustomTimer({
       <Button
         className={styles.SaveButton}
         onClick={saveCustomTime}
-        disabled={isButtonDisabled}
+        disabled={customTime <= 0}
       >
         Save
       </Button>
