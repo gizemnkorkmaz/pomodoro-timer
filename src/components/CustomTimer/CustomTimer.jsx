@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "../Button/Button";
 
@@ -14,13 +14,16 @@ function CustomTimer({
   customTime,
   setCustomTime,
 }) {
+  const [newTimer, setNewTimer] = useState(customTime);
+
   const setCustomTimer = (event) => {
     setIsTimerActive(false);
-    setCustomTime(event.target.value);
+    setNewTimer(event.target.value);
   };
 
   const saveCustomTime = () => {
-    const customTimeInSeconds = minutesToSeconds(customTime);
+    setCustomTime(newTimer);
+    const customTimeInSeconds = minutesToSeconds(newTimer);
 
     if (customTimeInSeconds > 0) {
       setSeconds(customTimeInSeconds);
@@ -40,7 +43,7 @@ function CustomTimer({
           type="number"
           min="0"
           placeholder="e.g. 25"
-          value={customTime}
+          value={newTimer}
           onChange={(event) => setCustomTimer(event)}
           className={styles.InputArea}
         />
