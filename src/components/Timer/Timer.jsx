@@ -56,7 +56,8 @@ function Timer() {
       } else {
         selectRound("longBreak");
       }
-
+    } else {
+      selectRound("pomodoro");
       setCurrentCount(currentRound + 1);
     }
   };
