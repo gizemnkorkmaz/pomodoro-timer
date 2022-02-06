@@ -1,0 +1,31 @@
+.ShowButton {
+  visibility: initial;
+}
+
+.HideButton {
+  visibility: hidden;
+}
+
+.CloseIcon {
+  background: none;
+  border: none;
+  position: relative;
+  left: 225px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+.SettingsIcon {
+  composes: CloseIcon;
+}
+
+@media screen and (max-width: 500px) {
+  .CloseIcon {
+    left: 155px;
+    bottom: 5px;
+  }
+
+  .SettingsIcon {
+    composes: CloseIcon;
+  }
+}

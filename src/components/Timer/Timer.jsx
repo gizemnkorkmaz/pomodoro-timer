@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
-import CustomTimerModal from "../CustomTimerModal/CustomTimerModal";
+import CustomTimer from "../CustomTimer/CustomTimer";
+import ToggleTimerButton from "../ToggleTimerButton/ToggleTimerButton";
 
 import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
@@ -41,6 +42,7 @@ function Timer() {
     setRound(round);
     setSeconds(roundTimeInSeconds);
     setIsTimerActive(false);
+    document.title = "Pomodoro Timer";
   };
 
   const pauseTimer = () => setIsTimerActive(false);
@@ -54,7 +56,8 @@ function Timer() {
       } else {
         selectRound("longBreak");
       }
-
+    } else {
+      selectRound("pomodoro");
       setCurrentCount(currentRound + 1);
     }
   };
@@ -74,9 +77,9 @@ function Timer() {
 
   useInterval(
     () => {
-      document.title = `${formatTime(seconds)} - ${roundMessage}`;
       if (seconds) {
         setSeconds(seconds - 1);
+        document.title = `${formatTime(seconds)} - ${roundMessage}`;
         if (seconds === 3 && isSoundOn) {
           countdownSound.play();
         }
@@ -89,48 +92,52 @@ function Timer() {
   );
 
   return (
-    <>
-      <div
-        className={`${isTimerActive ? styles.TimerActive : styles.Container}`}
-      >
-        <SelectRound
-          selectRound={selectRound}
-          isPomodoro={round === "pomodoro"}
-          isShortBreak={round === "shortBreak"}
-          isLongBreak={round === "longBreak"}
-          setIsOpenCustomTimer={setIsOpenCustomTimer}
-        />
-        <div className={styles.Timer}>{formattedTime}</div>
-        {isTimerActive && (
-          <Button className={styles.SoundButton} onClick={toggleSound}>
-            {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
-          </Button>
-        )}
-        <Button
-          className={styles.StartButton}
-          onClick={isTimerActive ? pauseTimer : startTimer}
-        >
-          {isTimerActive ? "Pause" : "Start"}
-        </Button>
-        {isTimerActive && (
-          <Button className={styles.SkipButton} onClick={skipRound}>
-            <SkipIcon />
-          </Button>
-        )}
-        <div className={styles.RoundMessage}>{roundMessage}</div>
-        <CurrentRound currentRound={currentRound} />
-      </div>
-      <CustomTimerModal
-        isOpen={isOpenCustomTimer}
-        isShowCloseButton={true}
-        setIsOpen={setIsOpenCustomTimer}
-        setSeconds={setSeconds}
-        setIsTimerActive={setIsTimerActive}
-        setRound={setRound}
-        customTime={customTime}
-        setCustomTime={setCustomTime}
+    <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
+      <ToggleTimerButton
+        isTimerActive={isTimerActive}
+        isOpenCustomTimer={isOpenCustomTimer}
+        setIsOpenCustomTimer={setIsOpenCustomTimer}
+        round={round}
       />
-    </>
+
+      {!isOpenCustomTimer ? (
+        <>
+          <SelectRound
+            selectRound={selectRound}
+            isPomodoro={round === "pomodoro"}
+            isShortBreak={round === "shortBreak"}
+            isLongBreak={round === "longBreak"}
+          />
+          <div className={styles.Timer}>{formattedTime}</div>
+          {isTimerActive && (
+            <Button className={styles.SoundButton} onClick={toggleSound}>
+              {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
+            </Button>
+          )}
+          <Button
+            className={styles.StartButton}
+            onClick={isTimerActive ? pauseTimer : startTimer}
+          >
+            {isTimerActive ? "Pause" : "Start"}
+          </Button>
+          {isTimerActive && (
+            <Button className={styles.SkipButton} onClick={skipRound}>
+              <SkipIcon />
+            </Button>
+          )}
+          <div className={styles.RoundMessage}>{roundMessage}</div>
+          <CurrentRound currentRound={currentRound} />
+        </>
+      ) : (
+        <CustomTimer
+          setIsOpenCustomTimer={setIsOpenCustomTimer}
+          setSeconds={setSeconds}
+          setIsTimerActive={setIsTimerActive}
+          customTime={customTime}
+          setCustomTime={setCustomTime}
+        />
+      )}
+    </div>
   );
 }
 

@@ -1,11 +1,6 @@
-.CustomTimerContainer {
-  padding: 40px 20px;
-  text-align: center;
-}
-
 .InputArea {
   padding: 5px 0;
-  background-color: rgb(224, 224, 224);
+  background-color: rgba(230, 216, 216, 0.904);
   box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
   border: none;
   border-radius: 5px;
@@ -28,12 +23,16 @@
   margin: 0 auto;
 }
 
+.InputArea:invalid {
+  border: 1.5px solid red;
+}
+
 .SaveButton {
   font-family: "Varela Round", sans-serif;
   background-color: rgba(241, 189, 221, 0.363);
   color: rgb(255, 255, 255);
   padding: 10px 30px;
-  margin: 3px;
+  margin: 20px;
   border: none;
   border-radius: 3px;
   font-size: 20px;

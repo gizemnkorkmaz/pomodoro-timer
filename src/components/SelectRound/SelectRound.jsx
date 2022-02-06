@@ -2,16 +2,7 @@ import React from "react";
 
 import Button from "../Button/Button";
 
-import { ReactComponent as SettingsIcon } from "../../assets/icons/SettingsIcon.svg";
-import styles from "./SelectRound.module.css";
-
-function SelectRound({
-  selectRound,
-  isPomodoro,
-  isShortBreak,
-  isLongBreak,
-  setIsOpenCustomTimer,
-}) {
+function SelectRound({ selectRound, isPomodoro, isShortBreak, isLongBreak }) {
   return (
     <div>
       <Button active={isPomodoro} onClick={() => selectRound("pomodoro")}>
@@ -22,12 +13,6 @@ function SelectRound({
       </Button>
       <Button active={isLongBreak} onClick={() => selectRound("longBreak")}>
         Long Break
-      </Button>
-      <Button
-        className={styles.SettingsButton}
-        onClick={() => setIsOpenCustomTimer(true)}
-      >
-        <SettingsIcon />
       </Button>
     </div>
   );
