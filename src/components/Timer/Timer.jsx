@@ -97,17 +97,12 @@ function Timer() {
         isTimerActive={isTimerActive}
         isOpenCustomTimer={isOpenCustomTimer}
         setIsOpenCustomTimer={setIsOpenCustomTimer}
-        round={round}
+        activeRound={round}
       />
 
       {!isOpenCustomTimer ? (
         <>
-          <SelectRound
-            selectRound={selectRound}
-            isPomodoro={round === "pomodoro"}
-            isShortBreak={round === "shortBreak"}
-            isLongBreak={round === "longBreak"}
-          />
+          <SelectRound selectRound={selectRound} activeRound={round} />
           <div className={styles.Timer}>{formattedTime}</div>
           {isTimerActive && (
             <Button className={styles.SoundButton} onClick={toggleSound}>
