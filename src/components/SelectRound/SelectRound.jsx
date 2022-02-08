@@ -11,13 +11,13 @@ function SelectRound({ selectRound, activeRound }) {
 
   return (
     <>
-      {rounds.map((round) => (
+      {rounds.map(({ value, label }) => (
         <Button
-          key={round.value}
-          active={activeRound === round.value}
-          onClick={() => selectRound(round.value)}
+          key={value}
+          active={activeRound === value}
+          onClick={() => selectRound(value)}
         >
-          {round.label}
+          {label}
         </Button>
       ))}
     </>
