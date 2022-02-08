@@ -2,19 +2,25 @@ import React from "react";
 
 import Button from "../Button/Button";
 
-function SelectRound({ selectRound, isPomodoro, isShortBreak, isLongBreak }) {
+function SelectRound({ selectRound, activeRound }) {
+  const rounds = [
+    { value: "pomodoro", label: "Pomodoro" },
+    { value: "shortBreak", label: "Short Break" },
+    { value: "longBreak", label: "Long Break" },
+  ];
+
   return (
-    <div>
-      <Button active={isPomodoro} onClick={() => selectRound("pomodoro")}>
-        Pomodoro
-      </Button>
-      <Button active={isShortBreak} onClick={() => selectRound("shortBreak")}>
-        Short Break
-      </Button>
-      <Button active={isLongBreak} onClick={() => selectRound("longBreak")}>
-        Long Break
-      </Button>
-    </div>
+    <>
+      {rounds.map((round) => (
+        <Button
+          key={round.value}
+          active={activeRound === round.value}
+          onClick={() => selectRound(round.value)}
+        >
+          {round.label}
+        </Button>
+      ))}
+    </>
   );
 }
 
