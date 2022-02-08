@@ -20,7 +20,7 @@ function CustomTimer({
     setNewTimer(event.target.value);
   };
 
-  const saveCustomTime = () => {
+  const saveCustomTimer = () => {
     setCustomTime(newTimer);
     const customTimeInSeconds = minutesToSeconds(newTimer);
 
@@ -48,7 +48,7 @@ function CustomTimer({
       </label>
       <Button
         className={styles.SaveButton}
-        onClick={saveCustomTime}
+        onClick={saveCustomTimer}
         disabled={newTimer <= 0}
       >
         Save
