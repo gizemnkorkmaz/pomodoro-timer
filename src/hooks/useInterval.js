@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import * as workerTimers from "worker-timers";
+
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 
@@ -16,8 +18,8 @@ function useInterval(callback, delay) {
       savedCallback.current();
     }
     if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
+      let id = workerTimers.setInterval(tick, delay);
+      return () => workerTimers.clearInterval(id);
     }
   }, [delay]);
 }
