@@ -11,12 +11,12 @@ function ToggleTimerButton({
   isTimerActive,
   isOpenCustomTimer,
   setIsOpenCustomTimer,
-  round,
+  activeRound,
 }) {
   return (
     <div
       className={`${
-        round === "pomodoro" ? styles.ShowButton : styles.HideButton
+        activeRound === "pomodoro" ? styles.ShowButton : styles.HideButton
       }`}
     >
       <Button
