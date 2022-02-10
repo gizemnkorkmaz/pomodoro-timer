@@ -16,7 +16,6 @@ import styles from "./Timer.module.css";
 
 import formatTime from "../../utils/formatTime";
 import minutesToSeconds from "../../utils/minutesToSeconds";
-import getTimeDifference from "../../utils/getTimeDifference";
 
 import useInterval from "../../hooks/useInterval";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -78,13 +77,14 @@ function Timer() {
 
   useInterval(
     () => {
-      if (seconds) {
-        const remainingSeconds = getTimeDifference(seconds);
+      const endTime = Date.now() + seconds * 1000;
+      const remainingSeconds = Math.round((endTime - Date.now()) / 1000);
 
+      if (endTime > Date.now()) {
         setSeconds(remainingSeconds - 1);
 
-        document.title = `${formatTime(seconds)} - ${roundMessage}`;
-        if (seconds === 3 && isSoundOn) {
+        document.title = `${formatTime(remainingSeconds)} - ${roundMessage}`;
+        if (remainingSeconds === 3 && isSoundOn) {
           countdownSound.play();
         }
       } else {
