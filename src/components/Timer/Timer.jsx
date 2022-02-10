@@ -47,9 +47,7 @@ function Timer() {
   };
 
   const pauseTimer = () => setIsTimerActive(false);
-  const startTimer = () => {
-    setIsTimerActive(true);
-  };
+  const startTimer = () => setIsTimerActive(true);
   const toggleSound = () => setIsSoundOn(!isSoundOn);
 
   const setNextRound = (round) => {
