@@ -28,6 +28,7 @@ function Timer() {
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
   const [isOpenCustomTimer, setIsOpenCustomTimer] = useState(false);
   const [customTime, setCustomTime] = useState(25);
+  const [endTime, setEndTime] = useState();
   const countdownSound = new Audio(countdownSoundSource);
 
   const selectRound = (round) => {
@@ -45,8 +46,12 @@ function Timer() {
     document.title = "Pomodoro Timer";
   };
 
+  const startTimer = () => {
+    setEndTime(Date.now() + seconds * 1000);
+    setIsTimerActive(true);
+  };
+
   const pauseTimer = () => setIsTimerActive(false);
-  const startTimer = () => setIsTimerActive(true);
   const toggleSound = () => setIsSoundOn(!isSoundOn);
 
   const setNextRound = (round) => {
@@ -77,11 +82,10 @@ function Timer() {
 
   useInterval(
     () => {
-      const endTime = Date.now() + seconds * 1000;
-      const remainingSeconds = Math.round((endTime - Date.now()) / 1000);
-
       if (endTime > Date.now()) {
-        setSeconds(remainingSeconds - 1);
+        const remainingSeconds = Math.round((endTime - Date.now()) / 1000);
+
+        setSeconds(remainingSeconds);
 
         document.title = `${formatTime(remainingSeconds)} - ${roundMessage}`;
         if (remainingSeconds === 3 && isSoundOn) {
