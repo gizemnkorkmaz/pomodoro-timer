@@ -16,6 +16,7 @@ import styles from "./Timer.module.css";
 
 import formatTime from "../../utils/formatTime";
 import minutesToSeconds from "../../utils/minutesToSeconds";
+import getTimeDifference from "../../utils/getTimeDifference";
 
 import useInterval from "../../hooks/useInterval";
 import useLocalStorage from "../../hooks/useLocalStorage";
@@ -46,7 +47,9 @@ function Timer() {
   };
 
   const pauseTimer = () => setIsTimerActive(false);
-  const startTimer = () => setIsTimerActive(true);
+  const startTimer = () => {
+    setIsTimerActive(true);
+  };
   const toggleSound = () => setIsSoundOn(!isSoundOn);
 
   const setNextRound = (round) => {
@@ -78,7 +81,10 @@ function Timer() {
   useInterval(
     () => {
       if (seconds) {
-        setSeconds(seconds - 1);
+        const remainingSeconds = getTimeDifference(seconds);
+
+        setSeconds(remainingSeconds - 1);
+
         document.title = `${formatTime(seconds)} - ${roundMessage}`;
         if (seconds === 3 && isSoundOn) {
           countdownSound.play();
