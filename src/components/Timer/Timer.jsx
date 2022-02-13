@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
@@ -17,15 +17,14 @@ import minutesToSeconds from "../../utils/minutesToSeconds";
 
 import useInterval from "../../hooks/useInterval";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { useEffect } from "react";
 
-function Timer({
+const Timer = ({
   round,
   setRound,
   isTimerActive,
   setIsTimerActive,
   currentTime,
-}) {
+}) => {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
   const [currentRound, setCurrentCount] = useState(1);
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
@@ -117,6 +116,6 @@ function Timer({
       <CurrentRound currentRound={currentRound} />
     </>
   );
-}
+};
 
 export default Timer;
