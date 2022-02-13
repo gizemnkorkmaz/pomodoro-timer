@@ -56,11 +56,8 @@ function Timer() {
 
   const setNextRound = (round) => {
     if (round === "pomodoro") {
-      if (currentRound % 4 !== 0) {
-        selectRound("shortBreak");
-      } else {
-        selectRound("longBreak");
-      }
+      const currentBreak = currentRound % 4 !== 0 ? "shortBreak" : "longBreak";
+      selectRound(currentBreak);
     } else {
       selectRound("pomodoro");
       setCurrentCount(currentRound + 1);
@@ -72,9 +69,7 @@ function Timer() {
       "Are you sure you want to finish the round early?"
     );
 
-    if (isConfirm) {
-      setNextRound(round);
-    }
+    if (isConfirm) setNextRound(round);
   };
 
   const formattedTime = formatTime(seconds);
