@@ -3,13 +3,13 @@ import { ReactComponent as CloseIcon } from "../../assets/icons/CloseIcon.svg";
 
 import styles from "./ToggleTimerButton.module.css";
 
-const ToggleTimerButton = ({ isOpenCustomTimer, setIsOpenCustomTimer }) => (
+const ToggleTimerButton = ({ isOpenSettings, setIsOpenSettings }) => (
   <span
     role="button"
     className={styles.SettingsIcon}
-    onClick={() => setIsOpenCustomTimer(!isOpenCustomTimer)}
+    onClick={() => setIsOpenSettings(!isOpenSettings)}
   >
-    {isOpenCustomTimer ? <CloseIcon /> : <SettingsIcon />}
+    {isOpenSettings ? <CloseIcon /> : <SettingsIcon />}
   </span>
 );
 

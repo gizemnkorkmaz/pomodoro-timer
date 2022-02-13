@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Button from "../Button/Button";
 import CurrentRound from "../CurrentRound/CurrentRound";
 import SelectRound from "../SelectRound/SelectRound";
-import CustomTimer from "../CustomTimer/CustomTimer";
-import ToggleTimerButton from "../ToggleTimerButton/ToggleTimerButton";
 
 import { ReactComponent as SkipIcon } from "../../assets/icons/SkipIcon.svg";
 import { ReactComponent as SoundOnIcon } from "../../assets/icons/SoundOnIcon.svg";
@@ -19,31 +17,31 @@ import minutesToSeconds from "../../utils/minutesToSeconds";
 
 import useInterval from "../../hooks/useInterval";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { useEffect } from "react";
 
-function Timer() {
+function Timer({
+  round,
+  setRound,
+  isTimerActive,
+  setIsTimerActive,
+  currentTime,
+}) {
   const [seconds, setSeconds] = useState(minutesToSeconds(25));
-  const [isTimerActive, setIsTimerActive] = useState(false);
-  const [round, setRound] = useState("pomodoro");
   const [currentRound, setCurrentCount] = useState(1);
   const [isSoundOn, setIsSoundOn] = useLocalStorage("isSoundOn", true);
-  const [isOpenCustomTimer, setIsOpenCustomTimer] = useState(false);
-  const [customTime, setCustomTime] = useState(25);
   const [endTime, setEndTime] = useState();
   const countdownSound = new Audio(countdownSoundSource);
 
-  const selectRound = (round) => {
-    const roundTime = {
-      pomodoro: customTime || 25,
-      longBreak: 15,
-      shortBreak: 5,
-    };
+  useEffect(() => {
+    setSeconds(minutesToSeconds(currentTime));
+  }, [currentTime]);
 
-    const roundTimeInSeconds = minutesToSeconds(roundTime[round]);
+  const selectRound = (round) => {
+    const roundTimeInSeconds = minutesToSeconds(currentTime);
 
     setRound(round);
     setSeconds(roundTimeInSeconds);
     setIsTimerActive(false);
-    document.title = "Pomodoro Timer";
   };
 
   const startTimer = () => {
@@ -96,46 +94,28 @@ function Timer() {
   );
 
   return (
-    <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      {isPomodoro && (
-        <ToggleTimerButton
-          isOpenCustomTimer={isOpenCustomTimer}
-          setIsOpenCustomTimer={setIsOpenCustomTimer}
-        />
+    <>
+      <SelectRound selectRound={selectRound} activeRound={round} />
+      <div className={styles.Timer}>{formattedTime}</div>
+      {isTimerActive && (
+        <Button className={styles.SoundButton} onClick={toggleSound}>
+          {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
+        </Button>
       )}
-      {!isOpenCustomTimer ? (
-        <>
-          <SelectRound selectRound={selectRound} activeRound={round} />
-          <div className={styles.Timer}>{formattedTime}</div>
-          {isTimerActive && (
-            <Button className={styles.SoundButton} onClick={toggleSound}>
-              {isSoundOn ? <SoundOnIcon /> : <SoundOffIcon />}
-            </Button>
-          )}
-          <Button
-            className={styles.StartButton}
-            onClick={isTimerActive ? pauseTimer : startTimer}
-          >
-            {isTimerActive ? "Pause" : "Start"}
-          </Button>
-          {isTimerActive && (
-            <Button className={styles.SkipButton} onClick={skipRound}>
-              <SkipIcon />
-            </Button>
-          )}
-          <div className={styles.RoundMessage}>{roundMessage}</div>
-          <CurrentRound currentRound={currentRound} />
-        </>
-      ) : (
-        <CustomTimer
-          setIsOpenCustomTimer={setIsOpenCustomTimer}
-          setSeconds={setSeconds}
-          setIsTimerActive={setIsTimerActive}
-          customTime={customTime}
-          setCustomTime={setCustomTime}
-        />
+      <Button
+        className={styles.StartButton}
+        onClick={isTimerActive ? pauseTimer : startTimer}
+      >
+        {isTimerActive ? "Pause" : "Start"}
+      </Button>
+      {isTimerActive && (
+        <Button className={styles.SkipButton} onClick={skipRound}>
+          <SkipIcon />
+        </Button>
       )}
-    </div>
+      <div className={styles.RoundMessage}>{roundMessage}</div>
+      <CurrentRound currentRound={currentRound} />
+    </>
   );
 }
 
