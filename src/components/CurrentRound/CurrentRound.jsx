@@ -1,9 +1,7 @@
-import React from "react";
-
 import styles from "./CurrentRound.module.css";
 
-function CurrentRound({ currentRound }) {
-  return <div className={styles.CurrentRound}>Round {currentRound}</div>;
-}
+const CurrentRound = ({ currentRound }) => (
+  <div className={styles.CurrentRound}>Round {currentRound}</div>
+);
 
 export default CurrentRound;
