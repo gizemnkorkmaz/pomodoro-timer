@@ -72,8 +72,9 @@ function Timer() {
     if (isConfirm) setNextRound(round);
   };
 
+  const isPomodoro = round === "pomodoro";
+  const roundMessage = isPomodoro ? "Stay focused!" : "Break time!";
   const formattedTime = formatTime(seconds);
-  const roundMessage = round === "pomodoro" ? "Stay focused!" : "Break time!";
 
   useInterval(
     () => {
@@ -96,13 +97,12 @@ function Timer() {
 
   return (
     <div className={`${isTimerActive ? styles.TimerActive : styles.Container}`}>
-      <ToggleTimerButton
-        isTimerActive={isTimerActive}
-        isOpenCustomTimer={isOpenCustomTimer}
-        setIsOpenCustomTimer={setIsOpenCustomTimer}
-        activeRound={round}
-      />
-
+      {isPomodoro && (
+        <ToggleTimerButton
+          isOpenCustomTimer={isOpenCustomTimer}
+          setIsOpenCustomTimer={setIsOpenCustomTimer}
+        />
+      )}
       {!isOpenCustomTimer ? (
         <>
           <SelectRound selectRound={selectRound} activeRound={round} />
