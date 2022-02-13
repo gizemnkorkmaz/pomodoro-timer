@@ -1,44 +1,6 @@
-.Container {
-  width: 500px;
-  height: 350px;
-  padding: 20px 80px;
-  text-align: center;
-  background-color: rgba(52, 27, 53, 0.205);
-  box-shadow: rgba(117, 68, 98, 0.363) 0px 5px 15px;
-  border-radius: 10px;
-  color: rgb(250, 250, 250);
-  filter: contrast(1.5);
-  position: relative;
-}
-
 .Timer {
   font-size: 100px;
   padding: 10px;
-}
-
-.TimerActive {
-  composes: Container;
-  background: linear-gradient(
-    -45deg,
-    rgb(211, 145, 174) 0%,
-    rgba(129, 160, 196, 0.664),
-    rgba(207, 174, 189, 0.356),
-    rgb(142, 174, 211) 100%
-  );
-  background-size: 400% 400%;
-  animation: gradient 8s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
 }
 
 .StartButton {
@@ -76,16 +38,6 @@
 }
 
 @media screen and (max-width: 500px) {
-  .Container {
-    width: 350px;
-    height: auto;
-    padding: 10px;
-  }
-
-  .TimerActive {
-    composes: Container;
-  }
-
   .Timer {
     font-size: 40px;
   }
@@ -108,14 +60,5 @@
   .RoundMessage {
     font-size: 10px;
     padding-bottom: 7px;
-  }
-
-  .CloseIcon {
-    left: 155px;
-    bottom: 5px;
-  }
-
-  .SettingsIcon {
-    composes: CloseIcon;
   }
 }

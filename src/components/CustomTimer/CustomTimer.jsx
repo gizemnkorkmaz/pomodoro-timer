@@ -2,13 +2,10 @@ import React, { useState } from "react";
 
 import Button from "../Button/Button";
 
-import minutesToSeconds from "../../utils/minutesToSeconds";
-
 import styles from "./CustomTimer.module.css";
 
 function CustomTimer({
-  setIsOpenCustomTimer,
-  setSeconds,
+  setIsOpenSettings,
   setIsTimerActive,
   customTime,
   setCustomTime,
@@ -22,14 +19,7 @@ function CustomTimer({
 
   const saveCustomTimer = () => {
     setCustomTime(newTimer);
-    const customTimeInSeconds = minutesToSeconds(newTimer);
-
-    if (customTimeInSeconds > 0) {
-      setSeconds(customTimeInSeconds);
-      document.title = "Pomodoro Timer";
-    }
-
-    setIsOpenCustomTimer(false);
+    setIsOpenSettings(false);
   };
 
   return (
