@@ -1,8 +1,6 @@
-import React from "react";
-
 import Button from "../Button/Button";
 
-function SelectRound({ selectRound, activeRound }) {
+const SelectRound = ({ selectRound, activeRound }) => {
   const rounds = [
     { value: "pomodoro", label: "Pomodoro" },
     { value: "shortBreak", label: "Short Break" },
@@ -22,6 +20,6 @@ function SelectRound({ selectRound, activeRound }) {
       ))}
     </>
   );
-}
+};
 
 export default SelectRound;
