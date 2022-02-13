@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import styles from "./App.module.css";
 import cx from "classnames";
 
 import Header from "./components/Header/Header";
 import Timer from "./components/Timer/Timer";
-import CustomTimer from "./components/CustomTimer/CustomTimer";
-
-import styles from "./App.module.css";
+import Settings from "./components/Settings/Settings";
 import ToggleTimerButton from "./components/ToggleTimerButton/ToggleTimerButton";
-import { useEffect } from "react";
 
 const App = () => {
   const [round, setRound] = useState("pomodoro");
@@ -44,7 +43,7 @@ const App = () => {
           />
         )}
         {isOpenSettings ? (
-          <CustomTimer
+          <Settings
             setIsOpenSettings={setIsOpenSettings}
             setIsTimerActive={setIsTimerActive}
             customTime={customTime}
