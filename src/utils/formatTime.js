@@ -3,13 +3,7 @@ import duration from "dayjs/plugin/duration";
 
 dayjs.extend(duration);
 
-const formatTime = (seconds) => {
-  return dayjs
-    .duration({
-      seconds: seconds % 60,
-      minutes: Math.floor(seconds / 60),
-    })
-    .format("mm:ss");
-};
+const formatTime = (seconds) =>
+  dayjs.duration(seconds, "seconds").format("mm:ss");
 
 export default formatTime;
