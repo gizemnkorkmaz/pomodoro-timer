@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Button from "../Button/Button";
 
-import styles from "./CustomTimer.module.css";
+import styles from "./Settings.module.css";
 
-function CustomTimer({
+const Settings = ({
   setIsOpenSettings,
   setIsTimerActive,
   customTime,
   setCustomTime,
-}) {
-  const [newTimer, setNewTimer] = useState(customTime);
+}) => {
+  const [time, setTime] = useState(customTime);
 
-  const setCustomTimer = (event) => {
+  const setTimer = (event) => {
     setIsTimerActive(false);
-    setNewTimer(event.target.value);
+    setTime(event.target.value);
   };
 
-  const saveCustomTimer = () => {
-    setCustomTime(newTimer);
+  const saveSettings = () => {
+    setCustomTime(time);
     setIsOpenSettings(false);
   };
 
@@ -31,20 +31,20 @@ function CustomTimer({
           type="number"
           min="0"
           placeholder="e.g. 25"
-          value={newTimer}
-          onChange={(event) => setCustomTimer(event)}
+          value={time}
+          onChange={(event) => setTimer(event)}
           className={styles.InputArea}
         />
       </label>
       <Button
         className={styles.SaveButton}
-        onClick={saveCustomTimer}
-        disabled={newTimer <= 0}
+        onClick={saveSettings}
+        disabled={time <= 0}
       >
         Save
       </Button>
     </>
   );
-}
+};
 
-export default CustomTimer;
+export default Settings;
