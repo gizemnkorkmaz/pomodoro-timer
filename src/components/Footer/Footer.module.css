@@ -1,0 +1,9 @@
+.Footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+.Link {
+  padding: 0 20px;
+}
