@@ -1,6 +1,6 @@
 # Pomodoro Timer
 
-The Pomodoro Technique is a famous time management method in which you split your work hours into small sessions to maintain your concentration by eliminating interruptions. You can use traditional 25 minutes Pomodoro timers or schedule your own focus time by clicking the settings button. The first four rounds are separated by five-minute breaks that help you to restore your ability to concentrate. After that, you take a fifteen-minute break and get ready for the following four sessions. There is a sound effect at the end of each countdown that you can turn on or off by your choice.
+The Pomodoro Technique is a famous time management method that you split your work hours into small sessions to maintain your concentration by eliminating interruptions. You can use traditional 25 minutes Pomodoro timers or schedule your own focus time by clicking the settings button. The first four rounds are separated by five-minute breaks that help you to restore your ability to concentrate. After that, you take a fifteen-minute break and get ready for the following four sessions. There is a sound effect at the end of each countdown that you can turn on or off by your choice. You can also skip the sessions with the skip button which appears when the timer is on.
 
 - [React Pomodoro Timer Project](#react-pomodoro-timer-project)
   - [Demo](#demo)
@@ -12,7 +12,6 @@ The Pomodoro Technique is a famous time management method in which you split you
 ## Demo
 
 https://user-images.githubusercontent.com/66412137/153780166-0f579652-a461-49a7-989e-ec9e8dd97ecb.mov
-
 
 ## Installation
 
