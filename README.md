@@ -11,6 +11,9 @@ The Pomodoro Technique is a famous time management method in which you split you
 
 ## Demo
 
+https://user-images.githubusercontent.com/66412137/153780166-0f579652-a461-49a7-989e-ec9e8dd97ecb.mov
+
+
 ## Installation
 
 ```
