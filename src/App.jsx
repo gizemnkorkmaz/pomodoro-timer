@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Timer from "./components/Timer/Timer";
 import Settings from "./components/Settings/Settings";
 import ToggleTimerButton from "./components/ToggleTimerButton/ToggleTimerButton";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   const [round, setRound] = useState("pomodoro");
@@ -59,6 +60,7 @@ const App = () => {
           />
         )}
       </div>
+      <Footer />
     </div>
   );
 };
