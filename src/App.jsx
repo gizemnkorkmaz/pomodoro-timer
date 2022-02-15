@@ -6,7 +6,7 @@ import cx from "classnames";
 import Header from "./components/Header/Header";
 import Timer from "./components/Timer/Timer";
 import Settings from "./components/Settings/Settings";
-import ToggleTimerButton from "./components/ToggleTimerButton/ToggleTimerButton";
+import SettingsButton from "./components/SettingsButton/SettingsButton";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -38,7 +38,7 @@ const App = () => {
         })}
       >
         {isPomodoro && (
-          <ToggleTimerButton
+          <SettingsButton
             isOpenSettings={isOpenSettings}
             setIsOpenSettings={setIsOpenSettings}
           />
