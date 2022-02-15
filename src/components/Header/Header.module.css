@@ -1,7 +1,14 @@
 .Header {
+  width: 500px;
   font-size: 22px;
   color: rgb(255, 255, 255);
   padding: 10px;
   margin-bottom: 40px;
   border-bottom: 0.5px solid rgba(240, 206, 206, 0.658);
+}
+
+@media screen and (max-width: 500px) {
+  .Header {
+    width: 350px;
+  }
 }
