@@ -1,0 +1,9 @@
+.Footer {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+}
+
+.Link {
+  margin: 0 10px;
+}

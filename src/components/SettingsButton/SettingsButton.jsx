@@ -1,7 +1,7 @@
 import { ReactComponent as SettingsIcon } from "../../assets/icons/SettingsIcon.svg";
 import { ReactComponent as CloseIcon } from "../../assets/icons/CloseIcon.svg";
 
-import styles from "./ToggleTimerButton.module.css";
+import styles from "./SettingsButton.module.css";
 
 const ToggleTimerButton = ({ isOpenSettings, setIsOpenSettings }) => (
   <span
