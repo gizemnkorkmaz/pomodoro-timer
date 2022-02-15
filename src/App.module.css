@@ -6,16 +6,22 @@
 
 html,
 body {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: linear-gradient(
     0deg,
     rgb(211, 145, 174) 0%,
     rgb(142, 174, 211) 100%
   );
   font-family: "Varela Round", sans-serif;
+  overflow: hidden;
+}
+
+.App {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .Container {
@@ -28,7 +34,6 @@ body {
   border-radius: 10px;
   color: rgb(250, 250, 250);
   filter: contrast(1.5);
-  position: relative;
 }
 
 .TimerActive {
@@ -57,7 +62,7 @@ body {
 
 @media screen and (max-width: 500px) {
   .Container {
-    width: 350px;
+    width: 340px;
     height: auto;
     padding: 10px;
   }
