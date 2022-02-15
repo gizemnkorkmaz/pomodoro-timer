@@ -39,12 +39,12 @@
 
 @media screen and (max-width: 500px) {
   .Timer {
-    font-size: 40px;
+    font-size: 60px;
   }
 
   .StartButton {
     font-size: 15px;
-    padding: 5px;
+    padding: 5px 10px;
   }
 
   .SkipButton {
