@@ -1,8 +1,7 @@
 .Header {
   font-size: 22px;
   color: rgb(255, 255, 255);
-  position: relative;
-  bottom: 50px;
-  padding: 3px;
+  padding: 10px;
+  margin-bottom: 40px;
   border-bottom: 0.5px solid rgba(240, 206, 206, 0.658);
 }
