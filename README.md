@@ -37,3 +37,7 @@ yarn start
 - [Day.js](https://day.js.org/)
 - [Classnames](https://github.com/JedWatson/classnames)
 - [Prettier](https://prettier.io/)
+
+### Special Thanks
+
+- [aykutkardas](https://github.com/aykutkardas) (for his mentorship)
